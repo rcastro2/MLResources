@@ -1,0 +1,14 @@
+*{
+  font-family:Arial;
+}
+li{
+  padding-bottom:10px;
+}
+span{
+  color:blue;
+  font-style:italic;
+}
+.link{
+  font-style:normal;
+  color:black;
+}
