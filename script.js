@@ -3,6 +3,7 @@ window.onload = function(event){
     modal = document.getElementById("myModal");
     table = document.getElementById("csvTable");
     shape = document.getElementById("shape");
+    caption = document.getElementById("caption");
 
     let close_button = document.getElementById("close");
     let hrefs = document.querySelectorAll(".hrefs")
@@ -10,6 +11,7 @@ window.onload = function(event){
         source.onclick = function(){
             file = this.innerHTML;
             fetch_data(file);
+            navigator.clipboard.writeText(file)
         }
     }
     close_button.onclick = function() {
@@ -63,7 +65,7 @@ async function fetch_data(file){
       tbody.appendChild(tr);
     };
     table.appendChild(tbody);
+    caption.innerHTML = file;
     shape.innerHTML = `(${data.length}, ${headers.length})`;
-  
     modal.style.display = "block";
 };

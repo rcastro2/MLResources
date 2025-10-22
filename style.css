@@ -4,11 +4,59 @@
 li{
   padding-bottom:10px;
 }
-span{
+.hrefs{
   color:blue;
   font-style:italic;
 }
 .link{
   font-style:normal;
   color:black;
+}
+
+table, th, td {
+  border: 1px solid black;
+  border-collapse: collapse;
+}
+th{
+  background-color: #888;
+  color:white;
+  padding:0px 10px;
+}
+
+/* The Modal (background) */
+.modal {
+  display: none; /* Hidden by default */
+  position: fixed; /* Stay in place */
+  z-index: 1; /* Sit on top */
+  left: 0;
+  top: 0;
+  width: 100%; /* Full width */
+  height: 100%; /* Full height */
+  overflow: auto; /* Enable scroll if needed */
+  background-color: rgb(0,0,0); /* Fallback color */
+  background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+}
+
+/* Modal Content/Box */
+.modal-content {
+  background-color: #fefefe;
+  margin: 15% auto; /* 15% from the top and centered */
+  padding: 20px;
+  border: 1px solid #888;
+  width: 80%; /* Could be more or less, depending on screen size */
+}
+
+/* The Close Button */
+#close {
+  background-color: gray ;
+  color:white;
+  padding:5px;
+  border-radius:10px;
+  font-weight: bold;
+}
+
+#close:hover,
+#close:focus {
+  background-color: black;
+  cursor: pointer;
 }
