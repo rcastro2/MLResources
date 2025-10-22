@@ -5,39 +5,189 @@
     <meta name="viewport" content="width=device-width">
     <title>Machine Learning Datasets</title>
     <link href="style.css" rel="stylesheet" type="text/css" />
+    <style>
+      table, th, td {
+        border: 1px solid black;
+        border-collapse: collapse;
+      }
+      th{
+        background-color: #888;
+        color:white;
+        padding:0px 10px;
+      }
+
+      /* The Modal (background) */
+      .modal {
+        display: none; /* Hidden by default */
+        position: fixed; /* Stay in place */
+        z-index: 1; /* Sit on top */
+        left: 0;
+        top: 0;
+        width: 100%; /* Full width */
+        height: 100%; /* Full height */
+        overflow: auto; /* Enable scroll if needed */
+        background-color: rgb(0,0,0); /* Fallback color */
+        background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+      }
+
+      /* Modal Content/Box */
+      .modal-content {
+        background-color: #fefefe;
+        margin: 15% auto; /* 15% from the top and centered */
+        padding: 20px;
+        border: 1px solid #888;
+        width: 80%; /* Could be more or less, depending on screen size */
+      }
+
+      /* The Close Button */
+      #close {
+        background-color: gray ;
+        color:white;
+        padding:5px;
+        border-radius:10px;
+        font-weight: bold;
+        font-style: normal;
+      }
+      #shape{
+         color:black;
+         font-style: normal;
+      }
+
+      #close:hover,
+      #close:focus {
+        background-color: black;
+        cursor: pointer;
+      }
+    </style>
   </head>
   <body>
     <script src="script.js"></script>
+    <!-- The Modal -->
+    <div id="myModal" class="modal">
+
+      <!-- Modal content -->
+      <div class="modal-content" style="overflow-x: scroll;">
+        
+        <table id="csvTable" border="1"></table>
+        <span id="shape"></span><hr>
+        <span id="close">Close</span>
+      </div>
+
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/papaparse@5.3.2/papaparse.min.js"></script>
     <h1>Machine Learning Datasets</h1>
-    <ol>
-      <li><b>CarPurchases.csv</b><br><span class="link">Link : </span> <span>https://rcastro2.github.io/MLResources/CarPurchases.csv</span></li>
-      <li><b>2018-personality-data.csv</b><br><span class="link">Link : </span> <span>https://rcastro2.github.io/MLResources/2018-personality-data.csv</span></li>
-      <li><b>2019_2015HappinessReport.csv</b><br><span class="link">Link : </span><span>https://rcastro2.github.io/MLResources/2019_2015HappinessReport.csv</span></li>
-      <li><b>AB_NYC_2019.csv</b><br><span class="link">Link : </span><span>https://rcastro2.github.io/MLResources/AB_NYC_2019.csv</span></li>
-      <li><b>applemobilitytrends-2020-07-26.csv</b><br><span class="link">Link : </span><span>https://rcastro2.github.io/MLResources/applemobilitytrends-2020-07-26.csv</span></li>
-      <li><b>boston-housing.csv</b><br><span class="link">Link : </span><span>https://rcastro2.github.io/MLResources/boston-housing.csv</span></li>
-      <li><b>cars.csv</b><br><span class="link">Link : </span><span>https://rcastro2.github.io/MLResources/cars.csv</span></li>
-      <li><b>CR101.csv</b><br><span class="link">Link : </span><span>https://rcastro2.github.io/MLResources/CR101.csv</span></li>
-      <li><b>forestfires.csv</b><br><span class="link">Link : </span><span>https://rcastro2.github.io/MLResources/forestfires.csv</span></li>
-      <li><b>framingham_diabetes.csv</b><br><span class="link">Link : </span><span>https://rcastro2.github.io/MLResources/framingham_diabetes.csv</span></li>
-      <li><b>googleplaystore.csv</b><br><span class="link">Link : </span><span>https://rcastro2.github.io/MLResources/googleplaystore.csv</span></li>
-      <li><b>indian_food.csv</b><br><span class="link">Link : </span><span>https://rcastro2.github.io/MLResources/indian_food.csv</span></li>
-      <li><b>mpg.csv</b><br><span class="link">Link : </span><span>https://rcastro2.github.io/MLResources/mpg.csv</span></li>
-      <li><b>nfl-elo-ratings.csv</b><br><span class="link">Link : </span><span>https://rcastro2.github.io/MLResources/nfl-elo-ratings.csv</span></li>
-      <li><b>nyc-sat-scores.csv</b><br><span class="link">Link : </span><span>https://rcastro2.github.io/MLResources/nyc-sat-scores.csv</span></li>
-      <li><b>Pokemon.csv</b><br><span class="link">Link : </span><span>https://rcastro2.github.io/MLResources/Pokemon.csv</span></li>
-      <li><b>redwine.csv</b><br><span class="link">Link : </span><span>https://rcastro2.github.io/MLResources/redwine.csv</span></li>
-      <li><b>whitewine.csv</b><br><span class="link">Link : </span><span>https://rcastro2.github.io/MLResources/whitewine.csv</span></li>
-      <li><b>census_at_the_school_sample1.csv</b><br><span class="link">Link : </span><span>https://rcastro2.github.io/MLResources/census_at_the_school_sample1.csv</span></li>
+  <ol>
+   <li>
+      <b>CarPurchases.csv</b><br/><span class="link">Link : </span>
+      <span class="hrefs">https://rcastro2.github.io/MLResources/CarPurchases.csv</span>
+   </li>
+   <li>
+      <b>2018-personality-data.csv</b><br /><span class="link">Link : </span>
+      <span class="hrefs">https://rcastro2.github.io/MLResources/2018-personality-data.csv</span>
+   </li>
+   <li>
+      <b>2019_2015HappinessReport.csv</b><br /><span class="link">Link : </span>
+      <span class="hrefs">https://rcastro2.github.io/MLResources/2019_2015HappinessReport.csv</span>
+   </li>
+   <li>
+      <b>AB_NYC_2019.csv</b><br /><span class="link">Link : </span>
+      <span class="hrefs">https://rcastro2.github.io/MLResources/AB_NYC_2019.csv</span>
+   </li>
+   <li>
+      <b>applemobilitytrends-2020-07-26.csv</b><br /><span class="link">Link : </span>
+      <span class="hrefs">https://rcastro2.github.io/MLResources/applemobilitytrends-2020-07-26.csv</span
+      >
+   </li>
+   <li>
+      <b>boston-housing.csv</b><br /><span class="link">Link : </span>
+      <span class="hrefs">https://rcastro2.github.io/MLResources/boston-housing.csv</span>
+   </li>
+   <li>
+      <b>cars.csv</b><br /><span class="link">Link : </span>
+      <span class="hrefs">https://rcastro2.github.io/MLResources/cars.csv</span>
+   </li>
+   <li>
+      <b>CR101.csv</b><br /><span class="link">Link : </span>
+      <span class="hrefs">https://rcastro2.github.io/MLResources/CR101.csv</span>
+   </li>
+   <li>
+      <b>forestfires.csv</b><br /><span class="link">Link : </span>
+      <span class="hrefs">https://rcastro2.github.io/MLResources/forestfires.csv</span>
+   </li>
+   <li>
+      <b>framingham_diabetes.csv</b><br /><span class="link">Link : </span>
+      <span class="hrefs">https://rcastro2.github.io/MLResources/framingham_diabetes.csv</span>
+   </li>
+   <li>
+      <b>googleplaystore.csv</b><br /><span class="link">Link : </span>
+      <span class="hrefs">https://rcastro2.github.io/MLResources/googleplaystore.csv</span>
+   </li>
+   <li>
+      <b>indian_food.csv</b><br /><span class="link">Link : </span>
+      <span class="hrefs">https://rcastro2.github.io/MLResources/indian_food.csv</span>
+   </li>
+   <li>
+      <b>mpg.csv</b><br /><span class="link">Link : </span>
+      <span class="hrefs">https://rcastro2.github.io/MLResources/mpg.csv</span>
+   </li>
+   <li>
+      <b>nfl-elo-ratings.csv</b><br /><span class="link">Link : </span>
+      <span class="hrefs">https://rcastro2.github.io/MLResources/nfl-elo-ratings.csv</span>
+   </li>
+   <li>
+      <b>nyc-sat-scores.csv</b><br /><span class="link">Link : </span>
+      <span class="hrefs">https://rcastro2.github.io/MLResources/nyc-sat-scores.csv</span>
+   </li>
+   <li>
+      <b>Pokemon.csv</b><br /><span class="link">Link : </span>
+      <span class="hrefs">https://rcastro2.github.io/MLResources/Pokemon.csv</span>
+   </li>
+   <li>
+      <b>redwine.csv</b><br /><span class="link">Link : </span>
+      <span class="hrefs">https://rcastro2.github.io/MLResources/redwine.csv</span>
+   </li>
+   <li>
+      <b>whitewine.csv</b><br /><span class="link">Link : </span>
+      <span class="hrefs">https://rcastro2.github.io/MLResources/whitewine.csv</span>
+   </li>
+   <li>
+      <b>census_at_the_school_sample1.csv</b><br /><span class="link">Link : </span>
+      <span class="hrefs">https://rcastro2.github.io/MLResources/census_at_the_school_sample1.csv</span>
+   </li>
+   <li>
+      <b>50_Startups.csv</b><br /><span class="link">Link : </span>
+      <span class="hrefs">https://rcastro2.github.io/MLResources/50_Startups.csv</span>
+   </li>
+   <li>
+      <b>CarPrice_Assignment.csv</b><br /><span class="link">Link : </span>
+      <span class="hrefs">https://rcastro2.github.io/MLResources/CarPrice_Assignment.csv</span>
+   </li>
+   <li>
+      <b>Housing.csv</b><br /><span class="link">Link : </span>
+      <span class="hrefs">https://rcastro2.github.io/MLResources/Housing.csv</span>
+   </li>
+   <li>
+      <b>Marketing_Data.csv</b><br /><span class="link">Link : </span>
+      <span class="hrefs">https://rcastro2.github.io/MLResources/Marketing_Data.csv</span>
+   </li>
+   <li>
+      <b>titanic.csv</b><br /><span class="link">Link : </span>
+      <span class="hrefs">https://rcastro2.github.io/MLResources/titanic.csv</span>
+   </li>
+   <li>
+      <b>sampleData.csv</b><br /><span class="link">Link : </span>
+      <span class="hrefs">https://rcastro2.github.io/MLResources/sampleData.csv</span>
+   </li>
+   <li>
+      <b>S5-Demographic-Data.csv</b><br /><span class="link">Link : </span>
+      <span class="hrefs">https://rcastro2.github.io/MLResources/S5-Demographic-Data.csv</span>
+   </li>
+      <li>
+      <b>S6-Movie-Ratings.csv</b><br /><span class="link">Link : </span>
+      <span class="hrefs">https://rcastro2.github.io/MLResources/S6-Movie-Ratings.csv</span>
+   </li>
+</ol>
 
-      <li><b>50_Startups.csv</b><br><span class="link">Link : </span><span>https://rcastro2.github.io/MLResources/50_Startups.csv</span></li>
-      <li><b>CarPrice_Assignment.csv</b><br><span class="link">Link : </span><span>https://rcastro2.github.io/MLResources/CarPrice_Assignment.csv</span></li>
-
-      <li><b>Housing.csv</b><br><span class="link">Link : </span><span>https://rcastro2.github.io/MLResources/Housing.csv</span></li>
-      <li><b>Marketing_Data.csv</b><br><span class="link">Link : </span><span>https://rcastro2.github.io/MLResources/Marketing_Data.csv</span></li>
-      <li><b>titanic.csv</b><br><span class="link">Link : </span><span>https://rcastro2.github.io/MLResources/titanic.csv</span></li>
-      <li><b>sampleData.csv</b><br><span class="link">Link : </span><span>https://rcastro2.github.io/MLResources/sampleData.csv</span></li>
-      
-    </ol>
   </body>
 </html>
