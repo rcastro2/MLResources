@@ -1,0 +1,72 @@
+
+<!DOCTYPE html><html><head>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script type="text/javascript" src="https://d3js.org/d3.v3.min.js"></script>
+    <style type="text/css">
+      .node {
+      }
+      .node circle {
+          fill: #fff;
+          stroke: steelblue;
+          stroke-width: 1.5px;
+      }
+      .node text {
+          font: 10px sans-serif;
+      }
+      .link {
+          fill: none;
+          stroke: #ccc;
+          stroke-width: 1.5px;
+      }
+
+      table{
+        text-align: left;
+      }
+      #parent{
+        float: left;
+        padding-left: 270px;
+        white-space: nowrap;
+      }
+      #header{
+        text-align: center;
+      }
+      #prediction{
+        text-align: center;
+      }
+
+    </style>
+    <title>Decision Tree Simulation</title>
+  </head>
+
+  <body>
+    <div id="body">
+      <div id="parent">
+        <table>
+          <tbody><tr><th id="header" colspan="2">Will you get an A on the next test?</th>
+          </tr><tr>
+            <td>What&#39;s your current average grade?</td>
+            <td id="tgrade"></td>
+          </tr>
+          <tr>
+            <td>How many hours will you sleep the night before the test?</td>
+            <td id="tsleep"></td>
+          </tr>
+          <tr>
+            <td>How many hours do you plan on studying for the test?</td>
+            <td id="tstudy"></td>
+          </tr>
+          <tr>
+            <td>Do you plan to cheat on the test?</td>
+            <td id="tcheat"></td>
+          </tr>
+          <tr><th id="prediction" colspan="2">Prediction: ???</th>
+        </tr></tbody></table>
+      </div>
+    </div>
+
+
+
+
+    <script src="tree.js"></script>
+  
+<script type="text/javascript" src="https://external-production.codecademy.com/assets/relay.js"></script></body></html>
